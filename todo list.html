@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ToDo (Vue.js version)</title>
+<!-- Load the Vue.js as a JavaScrip library -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+<div id="app"> <!-- The <div> ID will be used to link to the Vue.js code -->
+<h1>My Todo List</h1>
+<form>
+<input v-model="newTask"> <!-- the 'v-model' links elememt value with Vue.js variable -->
+<input type="button" value="add" v-on:click='addItem'> <!-- The 'v-on:click' is similar to the 'button.onclick' in the plain JavaScript version. -->
+</form>
+<ul id="taskList">
+</ul>
+</div>
+<script>
+let app = new Vue({
+el: '#app', // this links to the <div> with the ID #app
+data: {
+newTask: ''
+},
+methods: {
+addItem: () => {
+let newItem = document.createElement('li');
+newItem.innerText = app.newTask;
+document.getElementById('taskList').appendChild(newItem);
+app.newTask = '';
+}
+}
+})
+</script>
+</body>
+</html>
